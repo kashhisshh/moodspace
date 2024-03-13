@@ -1,15 +1,12 @@
-import { useRouteError } from "react-router";
+import { Error } from "../components/Error/Error";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function ErrorPage() {
-    const error = useRouteError();
-    return (
-        <div>
-            <h1>Oops!</h1>
-            <p>Sorry, an unexpected error occurred.</p>
-            <p>
-                <i>{error.statusText || error.message}</i>
-            </p>
-            <p></p>
-        </div>
-    )
+  return (
+    <>
+      <Navbar/>
+      <Error/>
+    </>
+    
+  );
 }
