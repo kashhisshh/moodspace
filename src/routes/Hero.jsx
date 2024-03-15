@@ -1,17 +1,5 @@
-import { Link } from 'react-router-dom'
-import Navbar from '../components/Navbar/Navbar'
+import HeroComponent from "../components/Hero/Hero";
 
-
-function Hero() {
-  return (
-    <>
-        <Navbar/>
-        <main>
-          MoodSpace
-          <Link to="/register">Get Started</Link>
-        </main>
-    </>
-  )
+export default function Hero() {
+  return <HeroComponent />;
 }
-
-export default Hero;
