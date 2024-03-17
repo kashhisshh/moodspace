@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { nprogress, NavigationProgress } from "@mantine/nprogress";
-import { useMantineColorScheme, Group, Button } from "@mantine/core";
 
 import Hero from "./routes/Hero";
 import Dashboard from "./routes/Dashboard";
@@ -9,13 +8,14 @@ import Login from "./routes/Login";
 import Logout from "./routes/Logout";
 import Register from "./routes/Register";
 import ErrorPage from "./routes/error-page";
-import Home from "./routes/Home";
+import Home from "./components/Home/Home";
 import Mood from "./routes/Mood";
 import Journal from "./routes/Journal";
 
 import "@mantine/core/styles.css";
 import "@mantine/nprogress/styles.css";
 import "@mantine/tiptap/styles.css";
+import '@mantine/charts/styles.css';
 import Navbar from "./components/Navbar/Navbar";
 import useAuthStore from "./stores/authStore";
 

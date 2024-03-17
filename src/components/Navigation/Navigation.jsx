@@ -21,20 +21,6 @@ const data = [
 ];
 
 export default function Navigation() {
-  let navigate = useNavigate();
-  const handleLogout = async () => {
-    try {
-      // Optional: Send logout request to your backend endpoint
-      // await fetch('/logout');
-      localStorage.removeItem("token");
-
-      navigate("/"); // Redirect to home
-    } catch (error) {
-      // Handle any errors that might occur
-      navigate("/dashboard");
-      console.error(error);
-    }
-  };
   const [active, setActive] = useState(0);
   const items = data.map((item, index) => (
     <NavLink
@@ -51,7 +37,7 @@ export default function Navigation() {
   ));
 
   return (
-    <nav className={classes.navbar} style={{maxHeight: "100%"}}>
+    <nav className={classes.navbar} style={{ maxHeight: "100%" }}>
       <div className={classes.header}>
         <Group justify="space-between">MoodSpace</Group>
       </div>

@@ -88,7 +88,7 @@ export default function MoodTracker() {
   return (
     <Card withBorder radius="md" className={classes.card}>
       <Group justify="space-between">
-        <Text className={classes.title}>How are yout feeling today?</Text>
+        <Text className={classes.title}>How are you feeling today?</Text>
       </Group>
       <SimpleGrid cols={3} mt="md">
         {items}

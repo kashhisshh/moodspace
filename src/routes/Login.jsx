@@ -22,6 +22,7 @@ const Login = () => {
         throw new Error(errorData.message || "Login failed");
       }
       const data = await response.json();
+      console.log(data.token);
       login(data.token);
       navigate("/dashboard");
     } catch (e) {

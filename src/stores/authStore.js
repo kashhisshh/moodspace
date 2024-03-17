@@ -5,6 +5,7 @@ const useAuthStore = create((set) => ({
   token: null,  
   login: (token) => set({ token, isLoggedIn: true }),
   logout: () => set({ token: null, isLoggedIn: false })
+
 }));
 
 export default useAuthStore;
