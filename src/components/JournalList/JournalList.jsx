@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import useAuthStore from "../../stores/authStore";
-import { Grid, Center, Card, Text, Button, Skeleton } from "@mantine/core";
+import { Grid, Card, Text, Button, Skeleton } from "@mantine/core";
+import { useNavigate } from "react-router";
 
 export default function JournalList() {
   const [journals, setJournals] = useState(null);
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const token = useAuthStore((store) => store.token);
   useEffect(() => {
@@ -49,7 +51,7 @@ export default function JournalList() {
           )
         ) : journals ? (
           journals.map((journal) => (
-            <Grid.Col span={4} key={journal._id}>
+            <Grid.Col span={4} key={journal._doc._id}>
               {" "}
               {/* Adjust column span as needed */}
               <Card shadow="sm" p="lg">
@@ -67,6 +69,9 @@ export default function JournalList() {
                   fullWidth
                   mt="md"
                   radius="md"
+                  onClick={() =>
+                    navigate(`/dashboard/journal/${journal._doc._id}`)
+                  }
                 >
                   See Full Journal
                 </Button>

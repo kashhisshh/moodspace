@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar/Navbar";
 import Form from "../components/Form/Form";
 import { useState } from "react";
 import { useNavigate } from "react-router";

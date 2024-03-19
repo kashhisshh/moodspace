@@ -18,6 +18,7 @@ import "@mantine/tiptap/styles.css";
 import '@mantine/charts/styles.css';
 import Navbar from "./components/Navbar/Navbar";
 import useAuthStore from "./stores/authStore";
+import JournalDetail from "./routes/JournalDetail";
 
 const App = () => {
   // Login state
@@ -43,6 +44,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="mood" element={<Mood />} />
             <Route path="journal" element={<Journal />} />
+            <Route path="journal/:id" element={<JournalDetail/>}/>
             <Route path="*" element={<ErrorPage />} />
           </Route>
         )}
