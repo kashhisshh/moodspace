@@ -2,6 +2,7 @@ import Form from "../components/Form/Form";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import useAuthStore from "../stores/authStore";
+import registerImg from "../assets/register.jpg";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -40,6 +41,7 @@ const Register = () => {
         setUsername={setUsername}
         password={password}
         setPassword={setPassword}
+        img={registerImg}
       />
     </>
   );

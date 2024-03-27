@@ -1,36 +1,82 @@
-import { Overlay, Container, Title, Button, Text } from "@mantine/core";
+import {
+  Image,
+  Container,
+  Title,
+  Button,
+  Group,
+  Text,
+  List,
+  ThemeIcon,
+  rem,
+  Grid,
+} from "@mantine/core";
+import { IconCheck } from "@tabler/icons-react";
+import image from "../../assets/openMind.png";
 import classes from "./hero.module.css";
 import { Link } from "react-router-dom";
+import openMind from "../../assets/openMind.png";
 
 export default function HeroComponent() {
   return (
-    <div className={classes.hero}>
-      <Overlay
-        gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .65) 40%)"
-        opacity={1}
-        zIndex={0}
-      />
-      <Container className={classes.container} size="xl">
-        <Title className={classes.title}>
-          A fully featured React components library
-        </Title>
-        <Text className={classes.description} size="xl" mt="xl">
-          Build fully functional accessible web applications faster than ever –
-          Mantine includes more than 120 customizable components and hooks to
-          cover you in any situation
-        </Text>
+    <Container size="xl">
+      <Grid>
+        <Grid.Col span={6}>
+          <div className={classes.inner}>
+            <div className={classes.content}>
+              <Title className={classes.title}>
+                Your Personal{" "}
+                <span className={classes.highlight}>Mental Health</span> Toolkit
+              </Title>
+              <Text c="dimmed" mt="md">
+                Simple tools to track your wellbeing, express your thoughts in a
+                safe space, and access helpful resources tailored to you.
+              </Text>
 
-        <Button
-          variant="gradient"
-          size="xl"
-          radius="xl"
-          className={classes.control}
-          component={Link}
-          to="/register"
-        >
-          Get started
-        </Button>
-      </Container>
-    </div>
+              <List
+                mt={30}
+                spacing="sm"
+                size="sm"
+                icon={
+                  <ThemeIcon size={20} radius="xl">
+                    <IconCheck
+                      style={{ width: rem(12), height: rem(12) }}
+                      stroke={1.5}
+                    />
+                  </ThemeIcon>
+                }
+              >
+                <List.Item>
+                  <b>Mood Tracker</b> – Intuitive mood tracker with customizable
+                  options.
+                </List.Item>
+                <List.Item>
+                  <b>Journalling Editor</b> – Secure journaling space with
+                  prompts and tools for self-expression.
+                </List.Item>
+                <List.Item>
+                  <b>Mental Health Resources</b> – Curated selection of trusted
+                  mental health resources, articles, and helplines.
+                </List.Item>
+              </List>
+
+              <Group mt={30}>
+                <Button radius="xl" size="md" className={classes.control}>
+                  <Link
+                    to="/register"
+                    style={{ textDecoration: "none", color: "#f5f5f5" }}
+                  >
+                    Get started
+                  </Link>
+                </Button>
+              </Group>
+            </div>
+            <Image src={image.src} className={classes.image} />
+          </div>
+        </Grid.Col>
+        <Grid.Col span={6}>
+          <Image src={openMind} />
+        </Grid.Col>
+      </Grid>
+    </Container>
   );
 }
