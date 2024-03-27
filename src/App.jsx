@@ -11,6 +11,10 @@ import ErrorPage from "./routes/error-page";
 import Home from "./components/Home/Home";
 import Mood from "./routes/Mood";
 import Journal from "./routes/Journal";
+import Books from "./routes/Books";
+import Apps from "./routes/Apps";
+import Articles from "./routes/Articles";
+import Organizations from "./routes/Organizations";
 
 import "@mantine/core/styles.css";
 import "@mantine/nprogress/styles.css";
@@ -45,6 +49,10 @@ const App = () => {
             <Route path="mood" element={<Mood />} />
             <Route path="journal" element={<Journal />} />
             <Route path="journal/:id" element={<JournalDetail/>}/>
+            <Route path="resources/books" element={<Books/>}/>
+            <Route path="resources/articles" element={<Articles/>}/>
+            <Route path = "resources/apps" element={<Apps/>}/>
+            <Route path="resources/organizations" element={<Organizations/>}/>
             <Route path="*" element={<ErrorPage />} />
           </Route>
         )}

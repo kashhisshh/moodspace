@@ -1,44 +1,31 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import {
-  Card,
-  Text,
-  SimpleGrid,
-  UnstyledButton,
-  Button,
-  Group,
-  useMantineTheme,
-} from "@mantine/core";
-import {
-  IconMoodHappyFilled,
-  IconMoodSadFilled,
-  IconMoodNeutralFilled,
-  IconMoodEmptyFilled,
-  IconMoodSmileFilled,
-} from "@tabler/icons-react";
+import { Card, Text, Grid, Paper, Button, Group, Title } from "@mantine/core";
 import useAuthStore from "../../stores/authStore";
 import classes from "./mood.module.css";
+import good from "../../assets/good.jpg";
+import bad from "../../assets/bad.jpg";
+import veryGood from "../../assets/veryGood.jpg";
+import veryBad from "../../assets/verysad.jpg";
+import neutral from "../../assets/neutral.jpg";
 
 const mockdata = [
-  { title: "Very Bad", icon: IconMoodSadFilled, color: "#FF0000", rating: "1" },
-  { title: "Bad", icon: IconMoodEmptyFilled, color: "#FFA500", rating: "2" },
+  { title: "Very Bad", img: veryBad, rating: "1" },
+  { title: "Bad", img: bad, rating: "2" },
   {
     title: "Neutral",
-    icon: IconMoodNeutralFilled,
-    color: "#FFFF00",
+    img: neutral,
     rating: "3",
   },
-  { title: "Good", icon: IconMoodSmileFilled, color: "#008000", rating: "4" },
+  { title: "Good", img: good, rating: "4" },
   {
     title: "Very Good",
-    icon: IconMoodHappyFilled,
-    color: "#0000FF",
+    img: veryGood,
     rating: "5",
   },
 ];
 
 export default function MoodTracker() {
-  const theme = useMantineTheme();
   const [moodRating, setMoodRating] = useState(null);
   const navigate = useNavigate();
   const token = useAuthStore((store) => store.token);
@@ -69,31 +56,58 @@ export default function MoodTracker() {
   };
 
   const items = mockdata.map((item) => (
-    <UnstyledButton key={item.title} className={classes.item}>
-      <item.icon color={item.color} size="2rem" />
-      <Text
-        size="xs"
-        mt={7}
-        component="button"
-        onClick={() => {
-          setMoodRating(item.rating);
-          console.log("moodRating after update:", moodRating);
+    <Grid.Col key={item.title} span={4}>
+      <Paper
+        shadow="md"
+        p="xl"
+        radius="md"
+        className={classes.card}
+        style={{
+          backgroundImage: `url(${item.img})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
+        h={200}
       >
-        {item.title}
-      </Text>
-    </UnstyledButton>
+        <div>
+          <Text className={classes.category} size="md" c="#f5f5f5">
+            mood
+          </Text>
+          <Title order={2} className={classes.title} mb={30}>
+            {item.title}
+          </Title>
+        </div>
+        <Button
+          variant="white"
+          color="dark"
+          onClick={() => setMoodRating(item.rating)}
+        >
+          Select mood
+        </Button>
+      </Paper>
+    </Grid.Col>
   ));
 
   return (
-    <Card withBorder radius="md" className={classes.card}>
+    <Card className={classes.card}>
       <Group justify="space-between">
-        <Text className={classes.title}>How are you feeling today?</Text>
+        <Title order={2} mb={20}>
+          How are you feeling?
+        </Title>
       </Group>
-      <SimpleGrid cols={3} mt="md">
+      <Grid grow gutter="xl" mb={20}>
         {items}
-      </SimpleGrid>
-      <Button onClick={handleClick}>Submit</Button>
+        <Grid.Col span={12}>
+          <Button
+            onClick={handleClick}
+            fullWidth
+            variant="gradient"
+            gradient={{ from: "#FF674D", to: "#7776BC", deg: 90 }}
+          >
+            <Title order={4}>Submit</Title>
+          </Button>
+        </Grid.Col>
+      </Grid>
     </Card>
   );
 }

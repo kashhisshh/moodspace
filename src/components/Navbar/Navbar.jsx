@@ -7,11 +7,10 @@ import {
   Group,
   Text,
   Menu,
-  Tabs,
   Burger,
   rem,
-  useMantineTheme,
   Button,
+  Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconLogout, IconSettings, IconChevronDown } from "@tabler/icons-react";
@@ -34,7 +33,9 @@ export default function Navbar({ isLoggedIn }) {
     <div className={classes.header}>
       <Container className={classes.mainSection} size="xl">
         <Group justify="space-between">
-          MoodSpace
+          <Title order={3} className={classes.logo}>
+            MoodSpace
+          </Title>
           <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
           {isLoggedIn ? (
             <Menu
@@ -95,15 +96,15 @@ export default function Navbar({ isLoggedIn }) {
 
                 <Menu.Divider />
               </Menu.Dropdown>
-              <ToggleTheme/>
+              <ToggleTheme />
             </Menu>
           ) : (
             <Group visibleFrom="xs">
               <ToggleTheme />
-              <Button component={Link} to="/login">
+              <Button component={Link} to="/login" bg="#7776BC">
                 Login
               </Button>
-              <Button component={Link} to="/register">
+              <Button component={Link} to="/register" bg="#FF674D">
                 Register
               </Button>
             </Group>

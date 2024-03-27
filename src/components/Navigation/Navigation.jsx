@@ -1,55 +1,62 @@
+import { useState } from "react";
+import { Group, Code } from "@mantine/core";
 import {
-  Text,
-  Group,
-} from '@mantine/core';
-import { IconMoodHappyFilled, IconGauge, IconNotebook} from '@tabler/icons-react';
-import classes from './nav.module.css';
-import { Link, NavLink } from 'react-router-dom';
+  IconGauge,
+  IconMoodHappy,
+  IconNotebook,
+  IconBooks,
+  IconArticle,
+  IconApps,
+  IconBrandDenodo,
+  IconLogout,
+} from "@tabler/icons-react";
+import classes from "./nav.module.css";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
-const links = [
-  { icon: IconGauge, label: 'Dashboard', link: ""},
-  {icon: IconMoodHappyFilled, label:"Mood", link:"/mood"},
-  {icon: IconNotebook, label: 'Journal', link:"/journal"}
-];
-
-const resources = [
-  { label: 'Books', link:"/resources/books" },
-  { label: 'Articles', link:"/resources/articles" },
-  { label: 'Apps', link:"/resources/apps" },
-  { label: 'Organizations', link:"/resources/organizations" },
+const data = [
+  { icon: IconGauge, label: "Dashboard", link: "" },
+  { icon: IconMoodHappy, label: "Mood", link: "/mood" },
+  { icon: IconNotebook, label: "Journal", link: "/journal" },
+  { icon: IconBooks, label: "Books", link: "/resources/books" },
+  { icon: IconArticle, label: "Articles", link: "/resources/articles" },
+  { icon: IconApps,label: "Apps", link: "/resources/apps" },
+  { icon: IconBrandDenodo, label: "Organizations", link: "/resources/organizations" },
 ];
 
 export default function Navigation() {
-  const mainLinks = links.map((link) => (
-    <NavLink key={link.label} className={classes.mainLink} component={Link} to={{pathname: `/dashboard${link.link}`}}>
-      <div className={classes.mainLinkInner}>
-        <link.icon size={20} className={classes.mainLinkIcon} stroke={1.5} />
-        <span>{link.label}</span>
-      </div>
-    </NavLink>
-  ));
+  const navigate = useNavigate();
+  const [active, setActive] = useState("Billing");
 
-  const collectionLinks = resources.map((item) => (
-    <NavLink key={item.label} className={classes.mainLink} component={Link} to={{pathname: `/dashboard${item.link}`}}>
-      <div className={classes.mainLinkInner}>
-        <span>{item.label}</span>
-      </div>
-    </NavLink>
+  const links = data.map((item) => (
+    <a
+      className={classes.link}
+      data-active={item.label === active || undefined}
+      href={item.link}
+      key={item.label}
+      onClick={(event) => {
+        event.preventDefault();
+        setActive(item.label);
+        navigate(`/dashboard${item.link}`)
+      }}
+    >
+      <item.icon className={classes.linkIcon} stroke={1.5} />
+      <span>{item.label}</span>
+    </a>
   ));
 
   return (
     <nav className={classes.navbar}>
-      <div className={classes.section}>
-        <div className={classes.mainLinks}>{mainLinks}</div>
-      </div>
+      <div className={classes.navbarMain}>{links}</div>
 
-      <div className={classes.section}>
-        <Group className={classes.collectionsHeader} justify="space-between">
-          <Text size="xs" fw={500} c="dimmed">
-            Resources
-          </Text>
-        </Group>
-        <div className={classes.collections}>{collectionLinks}</div>
+      <div className={classes.footer}>
+        <Link
+          to="/logout"
+          className={classes.link}
+        >
+          <IconLogout className={classes.linkIcon} stroke={1.5} />
+          <span>Logout</span>
+        </Link>
       </div>
     </nav>
   );
