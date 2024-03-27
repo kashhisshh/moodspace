@@ -19,7 +19,6 @@ export default function JournalDetail(){
             });
             const data = await response.json();
             setEntry(data.journal)
-            console.log(data);
         }
         fetchData();
     },[])

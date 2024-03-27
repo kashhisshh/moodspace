@@ -35,7 +35,7 @@ const App = () => {
   }, [location.pathname]);
 
   return (
-    <div>
+    <div style={{backgroundColor:"#f5f5f5"}}>
       <NavigationProgress />
       <Navbar isLoggedIn={isLoggedIn} />
       <Routes>

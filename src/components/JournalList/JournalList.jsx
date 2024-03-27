@@ -51,7 +51,7 @@ export default function JournalList() {
           )
         ) : journals ? (
           journals.map((journal) => (
-            <Grid.Col span={4} key={journal._doc._id}>
+            <Grid.Col key={journal._doc._id}>
               {" "}
               {/* Adjust column span as needed */}
               <Card shadow="sm" p="lg">
@@ -60,7 +60,7 @@ export default function JournalList() {
                 </Card.Section>
 
                 <Text size="sm" color="dimmed">
-                  {journal.preview}
+                  {journal.preview}...
                 </Text>
 
                 <Button

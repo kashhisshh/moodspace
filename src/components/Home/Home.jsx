@@ -3,14 +3,22 @@ import MoodSparkline from "../MoodSparkline/MoodSparkline";
 import JournalList from "../JournalList/JournalList";
 import useAuthStore from "../../stores/authStore";
 import { useEffect, useState } from "react";
-import { Container, Grid } from "@mantine/core";
+import {
+  Container,
+  Grid,
+  Text,
+  Title,
+  Paper,
+  SimpleGrid,
+  rem,
+} from "@mantine/core";
 
 const moodMapping = {
-  1: { name: "Very Bad", color: "red" },
-  2: { name: "Bad", color: "orange" },
-  3: { name: "Neutral", color: "yellow" },
-  4: { name: "Good", color: "green" },
-  5: { name: "Very Good", color: "blue" },
+  1: { name: "Very Bad", color: "#FF674D" },
+  2: { name: "Bad", color: "#7776BC" },
+  3: { name: "Neutral", color: "#F5F5F5" },
+  4: { name: "Good", color: "#DEEBF4" },
+  5: { name: "Very Good", color: "#000D7C" },
 };
 
 export default function Home() {
@@ -59,37 +67,68 @@ export default function Home() {
         { value: -Infinity } // Initial value with a very low 'value'
       );
       setMaxMood(maxEntry);
-      const sparklineData = formattedData.map((moodEntry) => moodEntry.value);
       setMonthlyMoodData(formattedData);
-      setSparklineData(sparklineData);
+      setSparklineData(ratings);
     };
     fetchData().catch((error) => {
       console.error("Error fetching data:", error);
     });
   }, [token]);
-
-  useEffect(() => {}, []);
-
+  const PRIMARY_COL_HEIGHT = rem(1000);
+  const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - var(--mantine-spacing-md) / 2)`;
   return (
-    <Container>
-      Hello User!
-      <Grid>
-        <Grid.Col span={{ base: 12, xs: 6 }}>
-          Average Rating: {avg.toFixed(1)}
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 6 }}>
-          {maxMood.value} times you had a {maxMood.name} mood
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 12 }}>
-          <JournalList />
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }}>
+    <Container my="md" pt={20} m={0} fluid>
+      <Title mb={30} mt={30}>
+        My Dashboard
+      </Title>
+      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+        <Paper height={PRIMARY_COL_HEIGHT} radius="md" p={20} bg="#DEEBF4">
           <MoodPieChart data={monthlyMoodData} />
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 8 }}>
           <MoodSparkline data={sparlineData} />
-        </Grid.Col>
-      </Grid>
+        </Paper>
+        <Grid gutter="md">
+          <Grid.Col>
+            <Paper height={SECONDARY_COL_HEIGHT} bg="#DEEBF4" p={10}>
+              <Title order={4} mb={10}>
+                Your Journals
+              </Title>
+              <JournalList />
+            </Paper>
+          </Grid.Col>
+          <Grid.Col span={6}>
+            <Paper
+              withBorder
+              radius="md"
+              height={SECONDARY_COL_HEIGHT}
+              bg="#FF674D"
+              p={10}
+            >
+              <Text size="xl" fw={500} mt="md">
+                Average Rating
+              </Text>
+              <Text size="sm" mt="sm">
+                {avg.toFixed(1)}
+              </Text>
+            </Paper>
+          </Grid.Col>
+          <Grid.Col span={6}>
+            <Paper
+              withBorder
+              radius="md"
+              height={SECONDARY_COL_HEIGHT}
+              bg="#7776BC"
+              p={10}
+            >
+              <Text size="xl" fw={500} mt="md">
+                {maxMood.value} times
+              </Text>
+              <Text size="sm" mt="sm">
+                you had a {maxMood.name} mood
+              </Text>
+            </Paper>
+          </Grid.Col>
+        </Grid>
+      </SimpleGrid>
     </Container>
   );
 }

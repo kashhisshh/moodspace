@@ -56,11 +56,25 @@ export default function Form({
               onChange={(e) => setPassword(e.target.value)}
             />
             {type === "Login" ? (
-              <Button fullWidth mt="xl" size="md" onClick={onSubmit}>
+              <Button
+                fullWidth
+                mt="xl"
+                size="md"
+                onClick={onSubmit}
+                variant="gradient"
+                gradient={{ from: "#FF674D", to: "#7776BC", deg: 90 }}
+              >
                 Login
               </Button>
             ) : (
-              <Button fullWidth mt="xl" size="md" onClick={onSubmit}>
+              <Button
+                fullWidth
+                mt="xl"
+                size="md"
+                onClick={onSubmit}
+                variant="gradient"
+                gradient={{ from: "#FF674D", to: "#7776BC", deg: 90 }}
+              >
                 Register
               </Button>
             )}

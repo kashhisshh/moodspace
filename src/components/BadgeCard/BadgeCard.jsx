@@ -54,6 +54,8 @@ export default function BadgeCard({
           component="a"
           href={link}
           target="_blank"
+          variant="gradient"
+          gradient={{ from: "#FF674D", to: "#7776BC", deg: 90 }}
         >
           {action}
         </Button>

@@ -9,6 +9,8 @@ const Login = () => {
   const navigate = useNavigate();
 
   const login = useAuthStore((state) => state.login);
+  const setName = useAuthStore((state)=> state.setName);
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -22,8 +24,9 @@ const Login = () => {
         throw new Error(errorData.message || "Login failed");
       }
       const data = await response.json();
-      console.log(data.token);
+      console.log(data);
       login(data.token);
+      setName(data.username);
       navigate("/dashboard");
     } catch (e) {
       console.log(e);

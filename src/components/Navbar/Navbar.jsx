@@ -17,17 +17,12 @@ import { IconLogout, IconSettings, IconChevronDown } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import ToggleTheme from "../ToogleTheme/ToggleTheme";
 import classes from "./navbar.module.css";
-
-const user = {
-  name: "Jane Spoonfighter",
-  email: "janspoon@fighter.dev",
-  image:
-    "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png",
-};
+import useAuthStore from "../../stores/authStore";
 
 export default function Navbar({ isLoggedIn }) {
   const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+  const uname = useAuthStore((store) => store.uname);
 
   return (
     <div className={classes.header}>
@@ -53,14 +48,9 @@ export default function Navbar({ isLoggedIn }) {
                   })}
                 >
                   <Group gap={7}>
-                    <Avatar
-                      src={user.image}
-                      alt={user.name}
-                      radius="xl"
-                      size={20}
-                    />
+                    <Avatar alt={uname} radius="xl" size={20} />
                     <Text fw={500} size="sm" lh={1} mr={3}>
-                      {user.name}
+                      {uname}
                     </Text>
                     <IconChevronDown
                       style={{ width: rem(12), height: rem(12) }}
@@ -71,16 +61,6 @@ export default function Navbar({ isLoggedIn }) {
               </Menu.Target>
               <Menu.Dropdown>
                 <Menu.Label>Settings</Menu.Label>
-                <Menu.Item
-                  leftSection={
-                    <IconSettings
-                      style={{ width: rem(16), height: rem(16) }}
-                      stroke={1.5}
-                    />
-                  }
-                >
-                  Account settings
-                </Menu.Item>
                 <Menu.Item
                   leftSection={
                     <IconLogout

@@ -10,6 +10,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const login = useAuthStore((state) => state.login);
+  const setName = useAuthStore((state) => state.setName);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +27,7 @@ const Register = () => {
       const data = await response.json();
       login(data.token);
       console.log(data.token);
+      setName(data.username);
       navigate("/dashboard");
     } catch (e) {
       console.log(e);

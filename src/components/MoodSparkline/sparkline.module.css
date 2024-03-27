@@ -1,9 +1,9 @@
 .root {
-    @mixin light {
-      --chart-color: var(--mantine-color-orange-8);
-    }
-  
-    @mixin dark {
-      --chart-color: var(--mantine-color-lime-4);
-    }
+  @mixin light {
+    --chart-color: #000d7c;
   }
+
+  @mixin dark {
+    --chart-color: #7776bc;
+  }
+}
