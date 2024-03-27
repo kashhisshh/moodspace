@@ -16,13 +16,10 @@ import Apps from "./routes/Apps";
 import Articles from "./routes/Articles";
 import Organizations from "./routes/Organizations";
 
-import "@mantine/core/styles.css";
-import "@mantine/nprogress/styles.css";
-import "@mantine/tiptap/styles.css";
-import '@mantine/charts/styles.css';
-import Navbar from "./components/Navbar/Navbar";
+
 import useAuthStore from "./stores/authStore";
 import JournalDetail from "./routes/JournalDetail";
+import { Container } from "@mantine/core";
 
 const App = () => {
   // Login state
@@ -35,9 +32,8 @@ const App = () => {
   }, [location.pathname]);
 
   return (
-    <div style={{backgroundColor:"#f5f5f5"}}>
+    <Container fluid bg="#f5f5f5" p={0} >
       <NavigationProgress />
-      <Navbar isLoggedIn={isLoggedIn} />
       <Routes>
         {!isLoggedIn && <Route index element={<Hero />} />}
         {isLoggedIn && (
@@ -48,11 +44,11 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="mood" element={<Mood />} />
             <Route path="journal" element={<Journal />} />
-            <Route path="journal/:id" element={<JournalDetail/>}/>
-            <Route path="resources/books" element={<Books/>}/>
-            <Route path="resources/articles" element={<Articles/>}/>
-            <Route path = "resources/apps" element={<Apps/>}/>
-            <Route path="resources/organizations" element={<Organizations/>}/>
+            <Route path="journal/:id" element={<JournalDetail />} />
+            <Route path="resources/books" element={<Books />} />
+            <Route path="resources/articles" element={<Articles />} />
+            <Route path="resources/apps" element={<Apps />} />
+            <Route path="resources/organizations" element={<Organizations />} />
             <Route path="*" element={<ErrorPage />} />
           </Route>
         )}
@@ -61,7 +57,7 @@ const App = () => {
         {!isLoggedIn && <Route path="register" element={<Register />} />}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </div>
+    </Container>
   );
 };
 

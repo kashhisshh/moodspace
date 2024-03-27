@@ -3,10 +3,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import useAuthStore from "../stores/authStore";
 import registerImg from "../assets/register.jpg";
+import Navbar from "../components/Navbar/Navbar";
+import { Container } from "@mantine/core";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   const login = useAuthStore((state) => state.login);
@@ -18,7 +21,7 @@ const Register = () => {
       const response = await fetch("http://localhost:8000/api/user/register/", {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, email }),
       });
       if (!response.ok) {
         const errorData = await response.json();
@@ -35,7 +38,8 @@ const Register = () => {
     }
   };
   return (
-    <>
+    <Container fluid p={0}>
+      <Navbar/>
       <Form
         type="Register"
         onSubmit={onSubmit}
@@ -43,9 +47,11 @@ const Register = () => {
         setUsername={setUsername}
         password={password}
         setPassword={setPassword}
+        email={email}
+        setEmail={setEmail}
         img={registerImg}
       />
-    </>
+    </Container>
   );
 };
 

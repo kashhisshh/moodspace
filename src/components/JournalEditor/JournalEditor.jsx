@@ -117,11 +117,10 @@ function JournalEditor() {
         </RichTextEditor.Toolbar>
         <RichTextEditor.Content />
       </RichTextEditor>
-      <Buttonvariant="gradient"
-        gradient={{ from: "#FF674D", to: "#7776BC", deg: 90 }}
-        fullWidth
+      <Button
         variant="gradient"
         gradient={{ from: "#FF674D", to: "#7776BC", deg: 90 }}
+        fullWidth
         onClick={onSubmit}
       >
         Save Entry

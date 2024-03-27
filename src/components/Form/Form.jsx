@@ -19,6 +19,8 @@ export default function Form({
   setUsername,
   password,
   setPassword,
+  email,
+  setEmail,
   img,
 }) {
   return (
@@ -37,9 +39,19 @@ export default function Form({
                 ? "Welcome back to MoodSpace"
                 : "Welcome to Moodspace, Register"}
             </Title>
+            {setEmail ? (
+              <TextInput
+                label="Email address"
+                name="email"
+                value={email}
+                placeholder="hello@gmail.com"
+                size="md"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            ) : null}
 
             <TextInput
-              label="Email address"
+              label="Username"
               name="username"
               value={username}
               placeholder="hello@gmail.com"

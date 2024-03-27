@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Group, Code } from "@mantine/core";
+import { Group, Code, Affix } from "@mantine/core";
 import {
   IconGauge,
   IconMoodHappy,
@@ -13,6 +13,8 @@ import {
 import classes from "./nav.module.css";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { UserButton } from "../UserButton/UserButton";
+import { useViewportSize } from "@mantine/hooks";
 
 const data = [
   { icon: IconGauge, label: "Dashboard", link: "" },
@@ -20,11 +22,16 @@ const data = [
   { icon: IconNotebook, label: "Journal", link: "/journal" },
   { icon: IconBooks, label: "Books", link: "/resources/books" },
   { icon: IconArticle, label: "Articles", link: "/resources/articles" },
-  { icon: IconApps,label: "Apps", link: "/resources/apps" },
-  { icon: IconBrandDenodo, label: "Organizations", link: "/resources/organizations" },
+  { icon: IconApps, label: "Apps", link: "/resources/apps" },
+  {
+    icon: IconBrandDenodo,
+    label: "Organizations",
+    link: "/resources/organizations",
+  },
 ];
 
 export default function Navigation() {
+  const { height, width } = useViewportSize();
   const navigate = useNavigate();
   const [active, setActive] = useState("Billing");
 
@@ -37,7 +44,7 @@ export default function Navigation() {
       onClick={(event) => {
         event.preventDefault();
         setActive(item.label);
-        navigate(`/dashboard${item.link}`)
+        navigate(`/dashboard${item.link}`);
       }}
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
@@ -46,18 +53,22 @@ export default function Navigation() {
   ));
 
   return (
-    <nav className={classes.navbar}>
-      <div className={classes.navbarMain}>{links}</div>
+    <Affix position={{ top: 0, left: 0 }}>
+      <nav className={classes.navbar} style={{ height: `${height}px` }}>
+        <div className={classes.navbarMain}>
+          <Group className={classes.header} justify="space-between">
+            <UserButton />
+          </Group>
+          {links}
+        </div>
 
-      <div className={classes.footer}>
-        <Link
-          to="/logout"
-          className={classes.link}
-        >
-          <IconLogout className={classes.linkIcon} stroke={1.5} />
-          <span>Logout</span>
-        </Link>
-      </div>
-    </nav>
+        <div className={classes.footer}>
+          <Link to="/logout" className={classes.link}>
+            <IconLogout className={classes.linkIcon} stroke={1.5} />
+            <span>Logout</span>
+          </Link>
+        </div>
+      </nav>
+    </Affix>
   );
 }

@@ -3,13 +3,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import useAuthStore from "../stores/authStore";
 import loginImg from "../assets/loginImg.jpg";
+import Navbar from "../components/Navbar/Navbar";
+import { Container } from "@mantine/core";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const login = useAuthStore((state) => state.login);
-  const setName = useAuthStore((state)=> state.setName);
+  const setName = useAuthStore((state) => state.setName);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +36,8 @@ const Login = () => {
     }
   };
   return (
-    <>
+    <Container fluid p={0}>
+      <Navbar />
       <Form
         type="Login"
         onSubmit={onSubmit}
@@ -44,7 +47,7 @@ const Login = () => {
         setPassword={setPassword}
         img={loginImg}
       />
-    </>
+    </Container>
   );
 };
 
