@@ -4,7 +4,9 @@ const useAuthStore = create((set) => ({
   isLoggedIn: false,
   token: null,
   uname:null,
-  setName:(uname) => set({uname}),  
+  uemail: null,
+  setName:(uname) => set({uname}),
+  setUEmail:(uemail) =>set({uemail}),  
   login: (token) => set({ token, isLoggedIn: true }),
   logout: () => set({ token: null, isLoggedIn: false })
 }));

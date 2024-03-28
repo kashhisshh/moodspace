@@ -12,6 +12,7 @@ const Login = () => {
 
   const login = useAuthStore((state) => state.login);
   const setName = useAuthStore((state) => state.setName);
+  const setUEmail = useAuthStore((state) => state.setUEmail);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ const Login = () => {
       console.log(data);
       login(data.token);
       setName(data.username);
+      setUEmail(data.email);
       navigate("/dashboard");
     } catch (e) {
       console.log(e);

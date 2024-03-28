@@ -14,6 +14,7 @@ const Register = () => {
 
   const login = useAuthStore((state) => state.login);
   const setName = useAuthStore((state) => state.setName);
+  const setUEmail = useAuthStore((state)=>state.setUEmail);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ const Register = () => {
       const response = await fetch("http://localhost:8000/api/user/register/", {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ username, password, email }),
+        body: JSON.stringify({ username, password}),
       });
       if (!response.ok) {
         const errorData = await response.json();
@@ -31,6 +32,7 @@ const Register = () => {
       login(data.token);
       console.log(data.token);
       setName(data.username);
+      setUEmail(data.email);
       navigate("/dashboard");
     } catch (e) {
       console.log(e);

@@ -2,7 +2,6 @@ import {
   Paper,
   TextInput,
   PasswordInput,
-  Checkbox,
   Button,
   Title,
   Text,
@@ -24,10 +23,10 @@ export default function Form({
   img,
 }) {
   return (
-    <Grid>
-      <Grid.Col span={6}>
+    <Grid pr={0}>
+      <Grid.Col span={6} pr={0}>
         <div className={classes.wrapper}>
-          <Paper className={classes.form} radius={0} p={50}>
+          <Paper className={classes.form} radius={0} p={50} h={660}>
             <Title
               order={2}
               className={classes.title}
@@ -39,6 +38,15 @@ export default function Form({
                 ? "Welcome back to MoodSpace"
                 : "Welcome to Moodspace, Register"}
             </Title>
+            <TextInput
+              label={type === "Login" ? "Username/Email" : "Username"}
+              name="username"
+              value={username}
+              placeholder="Ex: Jack-8"
+              size="md"
+              required
+              onChange={(e) => setUsername(e.target.value)}
+            />
             {setEmail ? (
               <TextInput
                 label="Email address"
@@ -49,15 +57,6 @@ export default function Form({
                 onChange={(e) => setEmail(e.target.value)}
               />
             ) : null}
-
-            <TextInput
-              label="Username"
-              name="username"
-              value={username}
-              placeholder="hello@gmail.com"
-              size="md"
-              onChange={(e) => setUsername(e.target.value)}
-            />
             <PasswordInput
               label="Password"
               name="password"
@@ -65,6 +64,7 @@ export default function Form({
               placeholder="Your password"
               mt="md"
               size="md"
+              required
               onChange={(e) => setPassword(e.target.value)}
             />
             {type === "Login" ? (
@@ -103,7 +103,7 @@ export default function Form({
           </Paper>
         </div>
       </Grid.Col>
-      <Grid.Col span={6}>
+      <Grid.Col span={6} pl={0}>
         <Image src={img} height={660} />
       </Grid.Col>
     </Grid>

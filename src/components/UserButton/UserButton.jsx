@@ -5,6 +5,7 @@ import useAuthStore from '../../stores/authStore';
 
 export function UserButton() {
   const uname = useAuthStore((store)=>store.uname);
+  const uemail = useAuthStore((store)=> store.uemail);
   return (
     <UnstyledButton className={classes.user}>
       <Group>
@@ -18,7 +19,7 @@ export function UserButton() {
           </Text>
 
           <Text c="dimmed" size="xs">
-            {uname}
+            {uemail}
           </Text>
         </div>
 

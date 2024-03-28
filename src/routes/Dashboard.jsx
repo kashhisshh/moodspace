@@ -1,10 +1,11 @@
 import Navigation from "../components/Navigation/Navigation";
-import { Grid } from "@mantine/core";
+import { Container, Grid } from "@mantine/core";
 import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
-    <Grid columns={24}>
+    <Container fluid p={0}>
+      <Grid columns={24}>
       <Grid.Col span={4} md={3}>
         <Navigation />
       </Grid.Col>
@@ -12,6 +13,8 @@ const Dashboard = () => {
         <Outlet />
       </Grid.Col>
     </Grid>
+    </Container>
+    
   );
 };
 
