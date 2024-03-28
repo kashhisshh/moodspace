@@ -1,6 +1,6 @@
 import * as data from "../resources.json";
 import BadgeCard from "../components/BadgeCard/BadgeCard";
-import { Grid, Space, Title, rem } from "@mantine/core";
+import { Grid, Space, Title, Container } from "@mantine/core";
 import sanjivini from "../assets/sanjivini.png";
 import aasra from "../assets/aasra.png";
 import vandrevala from "../assets/vandrevala.png";
@@ -47,10 +47,10 @@ export default function Organizations() {
     );
   });
   return (
-    <div>
+    <Container fluid p={20}>
       <Title order={1}>Organizations</Title>
       <Space h="md" />
       <Grid gutter="lg">{organizations}</Grid>
-    </div>
+    </Container>
   );
 }

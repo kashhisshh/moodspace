@@ -15,10 +15,13 @@ import image from "../../assets/openMind.png";
 import classes from "./hero.module.css";
 import { Link } from "react-router-dom";
 import openMind from "../../assets/openMind.png";
+import { useViewportSize } from "@mantine/hooks";
 
 export default function HeroComponent() {
+  const { height, width } = useViewportSize();
+  const newH = height * 0.926;
   return (
-    <Container size="xl">
+    <Container size="xl" style={{ overflow: "hidden" }} height={newH}>
       <Grid>
         <Grid.Col span={6}>
           <div className={classes.inner}>
@@ -37,7 +40,7 @@ export default function HeroComponent() {
                 spacing="sm"
                 size="sm"
                 icon={
-                  <ThemeIcon size={20} radius="xl">
+                  <ThemeIcon size={20} radius="xl" color="#05372C">
                     <IconCheck
                       style={{ width: rem(12), height: rem(12) }}
                       stroke={1.5}
@@ -60,10 +63,20 @@ export default function HeroComponent() {
               </List>
 
               <Group mt={30}>
-                <Button radius="xl" size="md" className={classes.control}>
+                <Button
+                  radius="xl"
+                  variant="filled"
+                  color="#05372C"
+                  size="md"
+                  className={classes.control}
+                >
                   <Link
                     to="/register"
-                    style={{ textDecoration: "none", color: "#f5f5f5" }}
+                    style={{
+                      textDecoration: "none",
+                      color: "#fff",
+                      backgroundColor: "#05372C",
+                    }}
                   >
                     Get started
                   </Link>

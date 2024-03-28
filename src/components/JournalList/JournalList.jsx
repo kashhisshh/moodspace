@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuthStore from "../../stores/authStore";
-import { Grid, Card, Text, Button, Skeleton } from "@mantine/core";
+import { Grid, Card, Text, Button, Skeleton, Container } from "@mantine/core";
 import { useNavigate } from "react-router";
 
 export default function JournalList() {
@@ -10,20 +10,23 @@ export default function JournalList() {
   const token = useAuthStore((store) => store.token);
   useEffect(() => {
     const fetchData = async () => {
-      try{
-        const response = await fetch("http://localhost:8000/api/journal/limit", {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json(); // Use await here
-      console.log(data);
-      setJournals(data.formattedJournals);
-      }catch(err){
+      try {
+        const response = await fetch(
+          "http://localhost:8000/api/journal/limit",
+          {
+            method: "GET",
+            headers: {
+              "Content-type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const data = await response.json(); // Use await here
+        console.log(data);
+        setJournals(data.formattedJournals);
+      } catch (err) {
         console.log(err);
-      }finally{
+      } finally {
         setIsLoading(false);
       }
     };
@@ -31,7 +34,7 @@ export default function JournalList() {
   }, [token]);
 
   return (
-    <div>
+    <Container fluid>
       <Grid>
         {isLoading ? (
           // Display Skeleton Loaders while loading
@@ -54,9 +57,9 @@ export default function JournalList() {
             <Grid.Col key={journal._doc._id}>
               {" "}
               {/* Adjust column span as needed */}
-              <Card shadow="sm" p="lg">
+              <Card p="lg" style={{ border: "1px dotted #05372C" }}>
                 <Card.Section>
-                  <Text weight={500}>{journal.title}</Text>
+                  <Text weight={500}>Title: {journal.title?journal.title:"none"}</Text>
                 </Card.Section>
 
                 <Text size="sm" color="dimmed">
@@ -64,8 +67,8 @@ export default function JournalList() {
                 </Text>
 
                 <Button
-                  variant="light"
-                  color="blue"
+                  variant="filled"
+                  color="#504F9D"
                   fullWidth
                   mt="md"
                   radius="md"
@@ -82,6 +85,6 @@ export default function JournalList() {
           <Grid.Col>No Journal data available</Grid.Col>
         )}
       </Grid>
-    </div>
+    </Container>
   );
 }

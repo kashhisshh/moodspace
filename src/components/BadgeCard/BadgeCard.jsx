@@ -55,7 +55,7 @@ export default function BadgeCard({
           href={link}
           target="_blank"
           variant="gradient"
-          gradient={{ from: "#FF674D", to: "#7776BC", deg: 90 }}
+          gradient={{ from: "#05372C", to: "#70D560", deg: 90 }}
         >
           {action}
         </Button>

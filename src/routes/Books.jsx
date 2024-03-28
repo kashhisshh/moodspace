@@ -1,6 +1,6 @@
 import * as data from "../resources.json";
 import BadgeCard from "../components/BadgeCard/BadgeCard";
-import { Grid, Space, Title, rem } from "@mantine/core";
+import { Grid, Space, Title, Container } from "@mantine/core";
 import habits from "../assets/7habits.jpeg";
 import body from "../assets/bodykeepsthescore.jpeg";
 import dialect from "../assets/dialectical.jpeg";
@@ -53,10 +53,10 @@ export default function Books() {
     );
   });
   return (
-    <div>
+    <Container fluid p={20}>
       <Title order={1}>Books</Title>
       <Space h="md" />
       <Grid gutter="lg">{books}</Grid>
-    </div>
+    </Container>
   );
 }

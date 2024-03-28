@@ -89,9 +89,9 @@ export default function MoodTracker() {
   ));
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} bg="#F0F7F6" p={20}>
       <Group justify="space-between">
-        <Title order={2} mb={20}>
+        <Title order={1} mb={20}>
           How are you feeling?
         </Title>
       </Group>
@@ -102,7 +102,7 @@ export default function MoodTracker() {
             onClick={handleClick}
             fullWidth
             variant="gradient"
-            gradient={{ from: "#FF674D", to: "#7776BC", deg: 90 }}
+            gradient={{ from: "#05372C", to: "#70D560", deg: 90 }}
           >
             <Title order={4}>Submit</Title>
           </Button>

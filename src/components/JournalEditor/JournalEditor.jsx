@@ -60,7 +60,7 @@ function JournalEditor() {
 
   return (
     <Container p={20}>
-      <Title order={2} mb={10}>
+      <Title order={1} mb={10}>
         Enter your Journal
       </Title>
       <TextInput
@@ -119,7 +119,7 @@ function JournalEditor() {
       </RichTextEditor>
       <Button
         variant="gradient"
-        gradient={{ from: "#FF674D", to: "#7776BC", deg: 90 }}
+        gradient={{ from: "#05372C", to: "#70D560", deg: 90 }}
         fullWidth
         onClick={onSubmit}
       >

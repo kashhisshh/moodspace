@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Group, Code, Affix } from "@mantine/core";
+import { Group, Code, Affix, Title, Center } from "@mantine/core";
 import {
   IconGauge,
   IconMoodHappy,
@@ -57,12 +57,15 @@ export default function Navigation() {
       <nav className={classes.navbar} style={{ height: `${height}px` }}>
         <div className={classes.navbarMain}>
           <Group className={classes.header} justify="space-between">
-            <UserButton />
+            <Title order={2} c="#EDF2F4">
+              MoodSpace
+            </Title>
           </Group>
           {links}
         </div>
 
         <div className={classes.footer}>
+          <UserButton />
           <Link to="/logout" className={classes.link}>
             <IconLogout className={classes.linkIcon} stroke={1.5} />
             <span>Logout</span>

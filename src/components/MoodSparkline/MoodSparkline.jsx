@@ -16,7 +16,7 @@ export default function MoodSparkline({ data }) {
             h={60}
             mx="auto"
             className={classes.root}
-            color="#000D7C"
+            color="#05372C"
           />
         </Stack>
       ) : (

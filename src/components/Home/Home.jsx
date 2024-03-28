@@ -14,11 +14,11 @@ import {
 } from "@mantine/core";
 
 const moodMapping = {
-  1: { name: "Very Bad", color: "#FF674D" },
-  2: { name: "Bad", color: "#7776BC" },
-  3: { name: "Neutral", color: "#F5F5F5" },
-  4: { name: "Good", color: "#DEEBF4" },
-  5: { name: "Very Good", color: "#000D7C" },
+  1: { name: "Very Bad", color: "#d52941" },
+  2: { name: "Bad", color: "#504f9d" },
+  3: { name: "Neutral", color: "#e1f296" },
+  4: { name: "Good", color: "#70D560" },
+  5: { name: "Very Good", color: "#05372C" },
 };
 
 export default function Home() {
@@ -77,54 +77,54 @@ export default function Home() {
   const PRIMARY_COL_HEIGHT = rem(1000);
   const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - var(--mantine-spacing-md) / 2)`;
   return (
-    <Container my="md" pt={20} m={0} fluid>
+    <Container my="md" p={20} m={0} fluid bg="#f0f7f6">
       <Title mb={30} mt={30}>
         My Dashboard
       </Title>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-        <Paper height={PRIMARY_COL_HEIGHT} radius="md" p={20} bg="#DEEBF4">
+        <Paper height={PRIMARY_COL_HEIGHT} radius="md" p={20} bg="#fff">
           <MoodPieChart data={monthlyMoodData} />
           <MoodSparkline data={sparlineData} />
         </Paper>
         <Grid gutter="md">
+          <Grid.Col span={6}>
+            <Paper
+              withBorder
+              radius="md"
+              height={SECONDARY_COL_HEIGHT}
+              bg="#D52941"
+              p={20}
+            >
+              <Title order={1} c="white">
+                {avg.toFixed(1)}
+              </Title>
+              <Text size="sm" fw={500} c="#DCD6F7">
+                Average Rating
+              </Text>
+            </Paper>
+          </Grid.Col>
+          <Grid.Col span={6}>
+            <Paper
+              withBorder
+              radius="md"
+              height={SECONDARY_COL_HEIGHT}
+              bg="#504F9D"
+              p={20}
+            >
+              <Title order={1} c="white">
+                {maxMood.value} times
+              </Title>
+              <Text size="sm" fw={500} c="#DCD6F7">
+                you had a {maxMood.name} mood
+              </Text>
+            </Paper>
+          </Grid.Col>
           <Grid.Col>
-            <Paper height={SECONDARY_COL_HEIGHT} bg="#DEEBF4" p={10}>
-              <Title order={4} mb={10}>
+            <Paper height={SECONDARY_COL_HEIGHT} bg="#fff" p={15}>
+              <Title order={3} mb={10}>
                 Your Journals
               </Title>
               <JournalList />
-            </Paper>
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Paper
-              withBorder
-              radius="md"
-              height={SECONDARY_COL_HEIGHT}
-              bg="#FF674D"
-              p={10}
-            >
-              <Text size="xl" fw={500} mt="md">
-                Average Rating
-              </Text>
-              <Text size="sm" mt="sm">
-                {avg.toFixed(1)}
-              </Text>
-            </Paper>
-          </Grid.Col>
-          <Grid.Col span={6}>
-            <Paper
-              withBorder
-              radius="md"
-              height={SECONDARY_COL_HEIGHT}
-              bg="#7776BC"
-              p={10}
-            >
-              <Text size="xl" fw={500} mt="md">
-                {maxMood.value} times
-              </Text>
-              <Text size="sm" mt="sm">
-                you had a {maxMood.name} mood
-              </Text>
             </Paper>
           </Grid.Col>
         </Grid>

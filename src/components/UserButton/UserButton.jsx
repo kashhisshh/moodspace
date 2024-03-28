@@ -1,29 +1,27 @@
-import { UnstyledButton, Group, Avatar, Text, rem } from '@mantine/core';
-import { IconChevronRight } from '@tabler/icons-react';
-import classes from './UserButton.module.css';
-import useAuthStore from '../../stores/authStore';
+import { UnstyledButton, Group, Avatar, Text, rem, Title } from "@mantine/core";
+import { IconChevronRight } from "@tabler/icons-react";
+import classes from "./UserButton.module.css";
+import useAuthStore from "../../stores/authStore";
 
 export function UserButton() {
-  const uname = useAuthStore((store)=>store.uname);
-  const uemail = useAuthStore((store)=> store.uemail);
+  const uname = useAuthStore((store) => store.uname);
+  const uemail = useAuthStore((store) => store.uemail);
   return (
-    <UnstyledButton className={classes.user}>
+    <UnstyledButton className={classes.user} mb={10}>
       <Group>
-        <Avatar
-          radius="xl"
-        />
+        <Avatar radius="xl" size="md" color="#EDF2F4">
+          {uname[0].toUpperCase()}
+        </Avatar>
 
         <div style={{ flex: 1 }}>
-          <Text size="sm" fw={500}>
+          <Title order={5} c="#EDF2F4">
             {uname}
-          </Text>
+          </Title>
 
           <Text c="dimmed" size="xs">
             {uemail}
           </Text>
         </div>
-
-        <IconChevronRight style={{ width: rem(14), height: rem(14) }} stroke={1.5} />
       </Group>
     </UnstyledButton>
   );

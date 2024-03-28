@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   flex-direction: column;
-  background-color: light-dark(#000d7c, #f5f5f5);
+  background-color: #05372c;
   padding: var(--mantine-spacing-md);
 
   border-right: rem(1px) solid
@@ -31,7 +31,7 @@
   align-items: center;
   text-decoration: none;
   font-size: var(--mantine-font-size-sm);
-  color: light-dark(#f5f5f5, #000d7c);
+  color: #edf2f4;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
   border-radius: var(--mantine-radius-sm);
   font-weight: 500;
@@ -51,18 +51,18 @@
   &[data-active] {
     &,
     &:hover {
-      background-color: var(--mantine-color-blue-light);
-      color: var(--mantine-color-blue-light-color);
+      /* background-color: var(--mantine-color-blue-light); */
+      color: #70d560;
 
       .linkIcon {
-        color: var(--mantine-color-blue-light-color);
+        color: #70d560;
       }
     }
   }
 }
 
 .linkIcon {
-  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-2));
+  color: #edf2f4;
   margin-right: var(--mantine-spacing-sm);
   width: rem(25px);
   height: rem(25px);

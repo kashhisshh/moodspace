@@ -16,7 +16,6 @@ import Apps from "./routes/Apps";
 import Articles from "./routes/Articles";
 import Organizations from "./routes/Organizations";
 
-
 import useAuthStore from "./stores/authStore";
 import JournalDetail from "./routes/JournalDetail";
 import { Container } from "@mantine/core";
@@ -32,7 +31,7 @@ const App = () => {
   }, [location.pathname]);
 
   return (
-    <Container fluid bg="#f5f5f5" p={0} >
+    <Container fluid bg="#f0f7f6" p={0} style={{ overflowX: "hidden" }}>
       <NavigationProgress />
       <Routes>
         {!isLoggedIn && <Route index element={<Hero />} />}

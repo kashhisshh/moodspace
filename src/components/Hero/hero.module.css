@@ -17,9 +17,7 @@
 
 .title {
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-  font-family:
-    Greycliff CF,
-    var(--mantine-font-family);
+  font-family: Greycliff CF, var(--mantine-font-family);
   font-size: rem(44px);
   line-height: 1.2;
   font-weight: 900;
@@ -46,7 +44,7 @@
 
 .highlight {
   position: relative;
-  background-color: var(--mantine-color-blue-light);
+  background-color: #e1f296;
   border-radius: var(--mantine-radius-sm);
   padding: rem(4px) rem(12px);
 }

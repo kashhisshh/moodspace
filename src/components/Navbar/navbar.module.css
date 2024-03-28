@@ -1,15 +1,15 @@
 .header {
-  background-color: light-dark(#deebf4, #000d7c);
+  background-color: #05372c;
   border-bottom: rem(1px) solid
     light-dark(var(--mantine-color-gray-2), transparent);
 }
 
 .logo {
-  color: light-dark(#000d7c, #f5f5f5);
+  color: #fefefe;
 }
 
 .mainSection {
-  padding: 5px;
+  padding: 8px;
 }
 
 .user {
