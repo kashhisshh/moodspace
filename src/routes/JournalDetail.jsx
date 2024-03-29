@@ -3,7 +3,12 @@ import { useParams } from "react-router";
 import DOMPurify from "dompurify";
 import "../styles/journalDetail.css";
 import useAuthStore from "../stores/authStore";
-import { Container, Title, Text, Paper, Box } from "@mantine/core";
+import {
+  Container,
+  Title,
+  Paper,
+  TypographyStylesProvider,
+} from "@mantine/core";
 export default function JournalDetail() {
   const [entry, setEntry] = useState(null);
   const [title, setTitle] = useState(null);
@@ -27,14 +32,13 @@ export default function JournalDetail() {
   }, []);
   return (
     <Container fluid p={20}>
-
       <Paper shadow="md" p="md" withBorder>
         <Title order={2}>Title: {title ? title : "None"}</Title>
-        <Box>
-          <Text
+        <TypographyStylesProvider>
+          <div
             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(entry) }}
           />
-        </Box>
+        </TypographyStylesProvider>
       </Paper>
     </Container>
   );

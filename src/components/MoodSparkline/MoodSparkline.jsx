@@ -12,8 +12,9 @@ export default function MoodSparkline({ data }) {
           </Title>
           <Sparkline
             data={data}
-            w={200}
-            h={60}
+            w={350}
+            h={90}
+            curveType="natural"
             mx="auto"
             className={classes.root}
             color="#05372C"

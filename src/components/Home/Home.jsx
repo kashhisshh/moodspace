@@ -74,27 +74,23 @@ export default function Home() {
       console.error("Error fetching data:", error);
     });
   }, [token]);
-  const PRIMARY_COL_HEIGHT = rem(1000);
-  const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - var(--mantine-spacing-md) / 2)`;
+  // const PRIMARY_COL_HEIGHT = rem(1200);
+  // const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - var(--mantine-spacing-md) / 2)`;
   return (
-    <Container my="md" p={20} m={0} fluid bg="#f0f7f6">
+    <Container my="md" p={15} m={0} fluid bg="#f0f7f6">
       <Title mb={30} mt={30}>
         My Dashboard
       </Title>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-        <Paper height={PRIMARY_COL_HEIGHT} radius="md" p={20} bg="#fff">
-          <MoodPieChart data={monthlyMoodData} />
-          <MoodSparkline data={sparlineData} />
+        <Paper radius="md" p={20} bg="#fff">
+          <Title order={2} mb={20}>
+            Your Journals
+          </Title>
+          <JournalList />
         </Paper>
-        <Grid gutter="md">
+        <Grid gutter="md" grow>
           <Grid.Col span={6}>
-            <Paper
-              withBorder
-              radius="md"
-              height={SECONDARY_COL_HEIGHT}
-              bg="#D52941"
-              p={20}
-            >
+            <Paper withBorder radius="md" bg="#D52941" p={20}>
               <Title order={1} c="white">
                 {avg.toFixed(1)}
               </Title>
@@ -104,13 +100,7 @@ export default function Home() {
             </Paper>
           </Grid.Col>
           <Grid.Col span={6}>
-            <Paper
-              withBorder
-              radius="md"
-              height={SECONDARY_COL_HEIGHT}
-              bg="#504F9D"
-              p={20}
-            >
+            <Paper withBorder radius="md" bg="#504F9D" p={20}>
               <Title order={1} c="white">
                 {maxMood.value} times
               </Title>
@@ -119,12 +109,14 @@ export default function Home() {
               </Text>
             </Paper>
           </Grid.Col>
-          <Grid.Col>
-            <Paper height={SECONDARY_COL_HEIGHT} bg="#fff" p={15}>
-              <Title order={3} mb={10}>
-                Your Journals
-              </Title>
-              <JournalList />
+          <Grid.Col span={12}>
+            <Paper p={10}>
+              <MoodPieChart data={monthlyMoodData} />
+            </Paper>
+          </Grid.Col>
+          <Grid.Col span={12}>
+            <Paper p={10}>
+              <MoodSparkline data={sparlineData} />
             </Paper>
           </Grid.Col>
         </Grid>

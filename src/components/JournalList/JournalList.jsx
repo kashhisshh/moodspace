@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
 import useAuthStore from "../../stores/authStore";
-import { Grid, Card, Text, Button, Skeleton, Container } from "@mantine/core";
+import {
+  Grid,
+  Card,
+  Text,
+  Button,
+  Skeleton,
+  Container,
+  Title,
+} from "@mantine/core";
 import { useNavigate } from "react-router";
 
 export default function JournalList() {
   const [journals, setJournals] = useState(null);
+  const [len, setLen] = useState(null);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const token = useAuthStore((store) => store.token);
@@ -21,9 +30,12 @@ export default function JournalList() {
             },
           }
         );
-        const data = await response.json(); // Use await here
+        const data = await response.json();
+        // Use await here
         console.log(data);
-        setJournals(data.formattedJournals);
+        setLen(data.formattedJournals.length);
+        const limitedJournals = data.formattedJournals.slice(0, 2);
+        setJournals(limitedJournals);
       } catch (err) {
         console.log(err);
       } finally {
@@ -54,17 +66,17 @@ export default function JournalList() {
           )
         ) : journals ? (
           journals.map((journal) => (
-            <Grid.Col key={journal._doc._id}>
+            <Grid.Col key={journal._doc._id} p={10}>
               {" "}
               {/* Adjust column span as needed */}
               <Card p="lg" style={{ border: "1px dotted #05372C" }}>
-                <Card.Section>
-                  <Text weight={500}>Title: {journal.title?journal.title:"none"}</Text>
-                </Card.Section>
+                <Title order={4}>
+                  {journal._doc.title
+                    ? journal._doc.title
+                    : "Title not available"}
+                </Title>
 
-                <Text size="sm" color="dimmed">
-                  {journal.preview}...
-                </Text>
+                <Text size="sm">{journal.preview}...</Text>
 
                 <Button
                   variant="filled"
@@ -84,6 +96,18 @@ export default function JournalList() {
         ) : (
           <Grid.Col>No Journal data available</Grid.Col>
         )}
+        {len > 2 ? (
+          <Grid.Col>
+            <Button
+              fullWidth
+              mt={10}
+              onClick={() => navigate("/dashboard/journal/all")}
+              bg="#D52941"
+            >
+              See All Journals
+            </Button>
+          </Grid.Col>
+        ) : null}
       </Grid>
     </Container>
   );

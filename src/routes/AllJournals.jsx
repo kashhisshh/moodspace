@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuthStore from "../stores/authStore";
-import { Grid, Card, Text, Button } from "@mantine/core";
+import { Grid, Card, Text, Button, Container, Title } from "@mantine/core";
 import { useNavigate } from "react-router";
 export default function AllJournals() {
   const [journals, setJournals] = useState(null);
@@ -13,34 +13,39 @@ export default function AllJournals() {
           method: "GET",
           headers: {
             "Content-type": "application/json",
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
           },
         });
         const data = await response.json();
         setJournals(data.formattedJournals);
       } catch (err) {
         console.log(err);
-      } 
+      }
     };
     fetchData();
   }, [token]);
   return (
-    <div>
+    <Container fluid p={20}>
+      <Title mb={20}>All Journals</Title>
       <Grid>
         {journals ? (
           <>
             {journals.map((journal) => (
-              <Grid.Col span={6} key={journal._doc._id}>
-                <Card shadow="sm" p="lg">
-                  <Card.Section>
-                    <Text weight={500}>{journal.title}</Text>
-                  </Card.Section>
-                  <Text size="sm" color="dimmed">
-                    {journal.preview}
-                  </Text>
+              <Grid.Col key={journal._doc._id} p={10} span={4}>
+                {" "}
+                {/* Adjust column span as needed */}
+                <Card p="lg" style={{ border: "3px solid #05372C" }}>
+                  <Title order={3} mb={7}>
+                    {journal._doc.title
+                      ? journal._doc.title
+                      : "Title not available"}
+                  </Title>
+
+                  <Text size="sm">{journal.preview}...</Text>
+
                   <Button
-                    variant="light"
-                    color="blue"
+                    variant="filled"
+                    color="#504F9D"
                     fullWidth
                     mt="md"
                     radius="md"
@@ -58,6 +63,6 @@ export default function AllJournals() {
           <Grid.Col>No Journal data available</Grid.Col>
         )}
       </Grid>
-    </div>
+    </Container>
   );
 }

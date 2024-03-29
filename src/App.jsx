@@ -11,6 +11,7 @@ import ErrorPage from "./routes/error-page";
 import Home from "./components/Home/Home";
 import Mood from "./routes/Mood";
 import Journal from "./routes/Journal";
+import AllJournals from "./routes/AllJournals";
 import Books from "./routes/Books";
 import Apps from "./routes/Apps";
 import Articles from "./routes/Articles";
@@ -43,6 +44,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="mood" element={<Mood />} />
             <Route path="journal" element={<Journal />} />
+            <Route path="journal/all" element={<AllJournals/>}/>
             <Route path="journal/:id" element={<JournalDetail />} />
             <Route path="resources/books" element={<Books />} />
             <Route path="resources/articles" element={<Articles />} />
