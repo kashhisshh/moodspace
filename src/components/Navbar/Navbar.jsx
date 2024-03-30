@@ -1,7 +1,6 @@
 import { Container, Group, Burger, Button, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Link } from "react-router-dom";
-import ToggleTheme from "../ToogleTheme/ToggleTheme";
 import classes from "./navbar.module.css";
 
 export default function Navbar() {
