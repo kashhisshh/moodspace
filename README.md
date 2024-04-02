@@ -25,13 +25,13 @@ MoodSpace is a web application to help users track their moods, journal, and acc
 
 ### Installation
 
- 1. Clone this repository: git clone https://github.com/Adarshkumar03/moodspace.git
- 2. Navigate to moodspace
- 3. Install Dependencies: npm install
+ 1. Clone this repository: `git clone https://github.com/Adarshkumar03/moodspace.git`
+ 2. Navigate to moodspace: `cd moodspace`
+ 3. Install Dependencies: `npm install`
 
 ### Development Mode
 
- 1. Start the Vite develpment server: npm run dev
+ 1. Start the Vite develpment server: `npm run dev`
 
 ### Production Build
 
