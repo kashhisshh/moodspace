@@ -13,9 +13,9 @@ import Mood from "./routes/Mood";
 import Journal from "./routes/Journal";
 import AllJournals from "./routes/AllJournals";
 import Books from "./routes/Books";
-import Apps from "./routes/Apps";
 import Articles from "./routes/Articles";
 import Organizations from "./routes/Organizations";
+import Helpline from "./routes/Helpline";
 
 import useAuthStore from "./stores/authStore";
 import JournalDetail from "./routes/JournalDetail";
@@ -48,8 +48,8 @@ const App = () => {
             <Route path="journal/:id" element={<JournalDetail />} />
             <Route path="resources/books" element={<Books />} />
             <Route path="resources/articles" element={<Articles />} />
-            <Route path="resources/apps" element={<Apps />} />
             <Route path="resources/organizations" element={<Organizations />} />
+            <Route path="resources/helpline" element={<Helpline/>} />
             <Route path="*" element={<ErrorPage />} />
           </Route>
         )}

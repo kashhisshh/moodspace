@@ -1,12 +1,12 @@
-import { Title, Text, Button, Container, Group } from "@mantine/core";
+import { Container, Title, Text, Button, Group } from "@mantine/core";
 import classes from "./error.module.css";
-import { Link } from "react-router-dom";
 import { useViewportSize } from "@mantine/hooks";
+import { Link } from "react-router-dom";
 
-export function Error() {
-  const { height } = useViewportSize();
+export default function Error() {
+  const { height, width } = useViewportSize();
   return (
-    <Container className={classes.root} fluid h={height}>
+    <Container h={height} bg="#f0f7f6">
       <div className={classes.label}>404</div>
       <Title className={classes.title}>You have found a secret place.</Title>
       <Text c="dimmed" size="lg" ta="center" className={classes.description}>
@@ -15,7 +15,9 @@ export function Error() {
       </Text>
       <Group justify="center">
         <Button variant="subtle" size="md">
-          <Link to="/">Take me back to home page</Link>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            Take me back to home page
+          </Link>
         </Button>
       </Group>
     </Container>

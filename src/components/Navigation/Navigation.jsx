@@ -9,6 +9,7 @@ import {
   IconApps,
   IconBrandDenodo,
   IconLogout,
+  IconPhoneCall,
 } from "@tabler/icons-react";
 import classes from "./nav.module.css";
 import { useNavigate } from "react-router";
@@ -22,11 +23,15 @@ const data = [
   { icon: IconNotebook, label: "Journal", link: "/journal" },
   { icon: IconBooks, label: "Books", link: "/resources/books" },
   { icon: IconArticle, label: "Articles", link: "/resources/articles" },
-  { icon: IconApps, label: "Apps", link: "/resources/apps" },
   {
     icon: IconBrandDenodo,
     label: "Organizations",
     link: "/resources/organizations",
+  },
+  {
+    icon: IconPhoneCall,
+    label: "Helpline",
+    link: "/resources/helpline",
   },
 ];
 
