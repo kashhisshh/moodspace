@@ -40,4 +40,6 @@ MoodSpace is a web application to help users track their moods, journal, and acc
 
 ## Screenshots
 ### Home Page 
-![home](https://photos.app.goo.gl/SGxe62s3W4hMdp7Y6)
+### Login Page
+### Register Page
+### Dashboard Page
