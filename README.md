@@ -39,3 +39,5 @@ MoodSpace is a web application to help users track their moods, journal, and acc
  2.  The  `dist`  folder produced by the build process contains static files. Deploy these to your preferred web hosting platform.
 
 ## Screenshots
+### Home Page 
+![home](https://photos.app.goo.gl/SGxe62s3W4hMdp7Y6)
