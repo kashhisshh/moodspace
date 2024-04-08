@@ -35,11 +35,20 @@ MoodSpace is a web application to help users track their moods, journal, and acc
 
 ### Production Build
 
- 1. Create an optimized build: npm run build
+ 1. Create an optimized build: `npm run build`
  2.  The  `dist`  folder produced by the build process contains static files. Deploy these to your preferred web hosting platform.
 
 ## Screenshots
-### Home Page 
+
+### Home Page
+![Home](public/homePage.png) 
 ### Login Page
+![Login](public/loginPage.png)
 ### Register Page
+![Register](public/registerPage.png)
 ### Dashboard Page
+![Dashboard](public/dashboardPage.png)
+### Mood Tracker
+![Mood](public/moodTracker.png)
+### Journalling Editor
+![Journal](public/journalPage.png)
