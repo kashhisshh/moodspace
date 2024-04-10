@@ -49,6 +49,6 @@ MoodSpace is a web application to help users track their moods, journal, and acc
 ### Dashboard Page
 ![Dashboard](public/dashboardPage.png)
 ### Mood Tracker
-![Mood](public/moodTracker.png)
+![Mood](public/mood-tracker.png)
 ### Journalling Editor
 ![Journal](public/journalPage.png)
