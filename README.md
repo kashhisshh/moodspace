@@ -13,7 +13,7 @@ MoodSpace is a web application to help users track their moods, journal, and acc
  - React
  - Vite
  - Mantine.js
- - Node.js
+ - Backend: Refer to [moodspace-server](https://github.com/Adarshkumar03/moodspace-server) 
  - JSON
 
 ## Getting Started
